@@ -1,0 +1,15 @@
+	title: first test
+	!nlp
+	content {
+			case(hello)(https://example.com) {
+					text {
+							<b>I exist!</b>${smthiread}${anthrthngiread}
+							<br/>
+							I use {https://example.com}{example} as an example a lot.
+							{img/someimg.ff}{A random image in the farbfeld format}
+					}
+					sources {
+							{footnotes}
+					}
+			}
+	}

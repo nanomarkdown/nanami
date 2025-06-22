@@ -1,0 +1,11 @@
+	title: first test
+	content {
+		case(hello) {
+			text {
+				I exist!
+			}
+			text {
+				I exist too!
+			}
+		}
+	}
