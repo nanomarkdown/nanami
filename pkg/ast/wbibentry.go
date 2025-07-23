@@ -16,4 +16,11 @@ You should have received a copy of the GNU General Public License
 along with nanami. If not, see <https://www.gnu.org/licenses/>.
 */
 
-package parser_test
+package ast
+
+type WBibEntry struct {
+	Keyword string
+	URL     string
+	Name    string
+	Date    string
+}

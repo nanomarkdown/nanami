@@ -16,4 +16,9 @@ You should have received a copy of the GNU General Public License
 along with nanami. If not, see <https://www.gnu.org/licenses/>.
 */
 
-package parser_test
+package ast
+
+type TextNode struct {
+	Content string
+	NoNLP   bool
+}

@@ -16,4 +16,30 @@ You should have received a copy of the GNU General Public License
 along with nanami. If not, see <https://www.gnu.org/licenses/>.
 */
 
-package parser_test
+package strings
+
+func StartsWithHttp(content string, start int) bool {
+	if start+7 <= len(content) && content[start:start+7] == "http://" {
+		return true
+	}
+	if start+8 <= len(content) && content[start:start+8] == "https://" {
+		return true
+	}
+	return false
+}
+
+func FindClosingBrace(content string, start int) int {
+	braceCount := 1
+	for i := start; i < len(content); i++ {
+		switch content[i] {
+		case '{':
+			braceCount++
+		case '}':
+			braceCount--
+			if braceCount == 0 {
+				return i
+			}
+		}
+	}
+	return -1
+}
