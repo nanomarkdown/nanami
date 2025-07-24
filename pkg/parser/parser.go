@@ -78,7 +78,7 @@ func parseContentBody(lines []string, start int, doc *ast.Document) int {
 			doc.Cases = append(doc.Cases, *caseNode)
 			i = newI
 		} else if line == "text {" {
-			textBlock, newI := parseTextBlock(lines, i, doc)
+			textBlock, newI := parseTextBlock(lines, i, false)
 			doc.Content = append(doc.Content, textBlock)
 			i = newI
 		} else if line == "sources {" {
@@ -128,7 +128,7 @@ func parseCase(lines []string, start int, doc *ast.Document) (*ast.CaseNode, int
 		if line == "}" {
 			return caseNode, i + 1
 		} else if line == "text {" {
-			textBlock, newI := parseTextBlock(lines, i, doc)
+			textBlock, newI := parseTextBlock(lines, i, false)
 			caseNode.Body = append(caseNode.Body, textBlock)
 			i = newI
 		} else if line == "sources {" {
@@ -147,12 +147,12 @@ func parseCase(lines []string, start int, doc *ast.Document) (*ast.CaseNode, int
 	return caseNode, i
 }
 
-func parseTextBlock(lines []string, start int, doc *ast.Document) (*ast.TextNode, int) {
+func parseTextBlock(lines []string, start int, noNLP bool) (*ast.TextNode, int) {
 	i := start + 1
 
 	textBlock := &ast.TextNode{
 		Content: "",
-		NoNLP:   doc.NoNLP,
+		NoNLP:   noNLP,
 	}
 
 	var contentLines []string
